@@ -23,7 +23,7 @@ class App extends Component {
    }
    searchname(e){
     this.setState({
-        name : e.target.value
+        sname : e.target.value
     })
 }
     updateid(e){
