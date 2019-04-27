@@ -20,6 +20,7 @@ class App extends Component {
        this.updateData= this.updateData.bind(this);
        this.updatenid = this.updatenid.bind(this);
        this.addnote = this.addnote.bind(this);
+       this.updateurl =this.updateurl.bind(this);
    }
    addname(e){
        this.setState({
@@ -61,6 +62,12 @@ class App extends Component {
             uemail : e.target.value
         })
     }
+
+    updateurl(e){
+        this.setState({
+            url:e.target.value
+        })
+    }
    
     updateData(name){
        if(name=="Name"){
@@ -74,6 +81,9 @@ class App extends Component {
        }
        else if (name== "addNote"){
         gblFunc.addNote(this.state.nid,this.state.note)
+       }
+       else if (name== "addwebhook"){
+        gblFunc.createWebhook(this.state.url)
        }
        else{
            gblFunc.searchPersonByid(this.state.id)
@@ -114,6 +124,11 @@ class App extends Component {
         <br/>
           <input className="custonInput" placeholder="Enter note" value={this.state.note} id="note" onChange={(e)=>{this.addnote(e)}}/>
           <br/><button className="custonUpdateButton" onClick={()=>{this.updateData("addNote")}}>Add Note</button>
+        <br/>
+        <p className="App-into">Create Webhooks</p>
+          <input className="custonInput" placeholder="Enter url" value={this.state.url} id="url" onChange={(e)=>{this.updateurl(e)}}/>
+          <br/>
+          <button className="custonUpdateButton" onClick={()=>{this.updateData("addwebhook")}}>Create Webhook</button>
         <br/>
           </div>
           <p className="App-into dn" id="result_header">Result from service</p>

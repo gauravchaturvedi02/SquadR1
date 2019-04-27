@@ -140,6 +140,37 @@ addPerson(name)
 
 
 },
+createWebhook(urlpath,event) {
+
+    url = 'https://' + company_domain + '.pipedrive.com/v1/webhooks/?api_token=' + api_token;
+    
+    var data = {
+        'subscription_url': urlpath,
+        'event_action':"added",
+        'event_object':"person"
+    }
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: data,
+        datatype: "json",
+        success: function(res){
+            document.getElementById("result_header").display="block";
+            document.getElementById("success").innerHTML = JSON.stringify(res);
+            document.getElementById("nid").value = "";
+            document.getElementById("note").value = "";
+        },
+        error:  function (){
+            document.getElementById("result_header").display="block";
+            document.getElementById("success").innerHTML = "Webhook could not be created.Some error Occured";
+            document.getElementById("nid").value = "";
+            document.getElementById("note").value = "";
+        }
+
+    })
+
+
+}
 
 }
 export default gblFunc;
