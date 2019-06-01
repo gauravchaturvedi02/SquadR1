@@ -146,7 +146,7 @@ createWebhook(urlpath,event) {
     
     var data = {
         'subscription_url': urlpath,
-        'event_action':id,
+        'event_action':"*",
         'event_object':"person"
     }
     $.ajax({
