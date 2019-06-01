@@ -115,6 +115,12 @@ class App extends Component {
           <input className="custonInput" placeholder="Enter note" value={this.state.note} id="note" onChange={(e)=>{this.addnote(e)}}/>
           <br/><button className="custonUpdateButton" onClick={()=>{this.updateData("addNote")}}>Add Note</button>
         <br/>
+        <p className="App-into">Create Webhooks</p>
+          <input className="custonInput" placeholder="Enter url" value={this.state.rurl} id="url" onChange={(e)=>{this.updateurl(e)}}/>
+          <br/><select id="event">
+    <option value="updated">Updated</option>
+    <option value="created">Created</option>
+    </select>
           </div>
           <p className="App-into dn" id="result_header">Result from service</p>
           <div id="success" className ="resultdiv"></div>
